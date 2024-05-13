@@ -6,31 +6,87 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="area1"> 
-Área 1
+    <div class="container">
+        <div class="area1" onclick="showArea('area1')">Área 1</div>
+        <div class="row">
+            <div class="area2" onclick="showArea('area2')">Área 2</div>
+            <div class="area3" onclick="showArea('area3')">Área 3</div>
+        </div>
     </div>
-  <div class="area2"> 
-    Área 2
+    <div class="button-container">
+        <button onclick="showArea('area1')">Área 1</button>
+        <button onclick="showArea('area2')">Área 2</button>
+        <button onclick="showArea('area3')">Área 3</button>
     </div>
-    <div class="area3"> 
-        Área 3
-    </div>
-    
 </body>
-.
+
+<script>
+    function showArea(area) {
+        document.querySelector('.area1').style.display = 'none';
+        document.querySelector('.area2').style.display = 'none';
+        document.querySelector('.area3').style.display = 'none';
+        document.querySelector('.row').style.display = 'none';
+
+        var selectedArea = document.querySelector('.' + area);
+        selectedArea.style.display = 'block';
+        selectedArea.style.width = '100%';
+        selectedArea.style.height = '100%';
+
+        if (area === 'area2' || area === 'area3') {
+            document.querySelector('.row').style.display = 'flex';
+            document.querySelector('.row').style.width = '100%';
+            document.querySelector('.row').style.height = '100%';
+        }
+    }
+</script>
 <style>
-.area1{
-    background-color: rgb(171, 165, 165);
-    width: 1550px;
-    height: 350px;
-    border: 1px solid black;
+    .container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 80vh;
+ 
+    box-sizing: border-box;
+    margin-left: 200px;
+    margin-top: 80px;
+    font-size: 26px;
 }
-     
-.area2{
-    background-color: rgb(171, 165, 165);
-    width: 800px;
-    height: 500px;
-    border: 1px solid black;
+
+.area1 {
+    background-color: rgb(209, 200, 200);
+    width: 100%;
+    height: 80%;
+    border: 2px solid rgb(149, 143, 143);
+    box-sizing: border-box;
 }
-</style>
+
+.area2, .area3 {
+    background-color: rgb(209, 200, 200);
+    width: 50%;
+    height: 100%;
+    border: 2px solid rgb(149, 143, 143);
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.button-container {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 30px;
+        margin-right: 40px;
+    }
+
+    .button-container button {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 20px;
+        background-color: royalblue;
+        color: white;
+    }
+    </style>
+   
 </html>
